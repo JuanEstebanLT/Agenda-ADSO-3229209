@@ -1,5 +1,6 @@
 // CLASE 1
 
+/* 
 export default function App() {
   const fecha = new Date().toLocaleString(); return (
   <main> 
@@ -7,6 +8,8 @@ export default function App() {
     <p>Me gustaria aprender a realizar frontend por medio de css y archivos jsx y saberlo subir a repositorios por medio de github</p>
   </main>
 )}
+
+// CLASE 3
 
 /*
 // src/App.jsx
@@ -78,4 +81,6 @@ export default function App() {
   );
 }
 */
+
+// CLASE 4
 

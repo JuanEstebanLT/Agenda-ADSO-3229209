@@ -1,3 +1,6 @@
+// CLASE 3
+
+/*
 // ContactoCard.jsx
 // Este componente muestra UN contacto de la agenda.
 // Recibe datos (props): nombre, telefono, correo, etiqueta.
@@ -5,19 +8,23 @@
 export default function ContactoCard({ nombre, telefono, correo, etiqueta }) {
     return (
       <div className="card-contacto">
-        {/* Nombre del contacto en negrita */}
+        {/* Nombre del contacto en negrita }
         <h3 className="card-nombre">{nombre}</h3>
 
-        {/* Teléfono */}
+        {/* Teléfono }
         <p className="card-linea">📞 {telefono}</p>
 
-        {/* Correo */}
+        {/* Correo }
         <p className="card-linea">📧 {correo}</p>
 
-        {/* Etiqueta adicional, si existe */}
+        {/* Etiqueta adicional, si existe }
         {etiqueta && (
           <p className="card-etiqueta">{etiqueta}</p>
         )}
       </div>
     );
   }
+*/
+
+// CLASE 4
+
