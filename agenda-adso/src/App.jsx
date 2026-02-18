@@ -1,3 +1,14 @@
+// CLASE 1
+
+export default function App() {
+  const fecha = new Date().toLocaleString(); return (
+  <main> 
+    <h1>Hola soy Juan Esteban Lezcano Tejada estudiante del sena con numero de ficha 3229209</h1>
+    <p>Me gustaria aprender a realizar frontend por medio de css y archivos jsx y saberlo subir a repositorios por medio de github</p>
+  </main>
+)}
+
+/*
 // src/App.jsx
 // Este componente arma la pantalla completa y usa ContactoCard para cada persona.
 
@@ -49,7 +60,7 @@ export default function App() {
       <h1 className="app-title">Agenda ADSO</h1>
       <p className="app-subtitle">Contactos guardados</p>
 
-      {/* Recorremos el arreglo contactos y pintamos una tarjeta por cada uno */}
+      {/* Recorremos el arreglo contactos y pintamos una tarjeta por cada uno }
       {contactos.map((c) => (
         <ContactoCard
           key={c.id}        // key única para React
@@ -66,3 +77,5 @@ export default function App() {
     </main>
   );
 }
+*/
+

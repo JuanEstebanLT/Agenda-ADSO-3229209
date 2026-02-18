@@ -3,21 +3,21 @@
 // Recibe datos (props): nombre, telefono, correo, etiqueta.
 
 export default function ContactoCard({ nombre, telefono, correo, etiqueta }) {
-  return (
-    <div className="card-contacto">
-      {/* Nombre del contacto en negrita */}
-      <h3 className="card-nombre">{nombre}</h3>
+    return (
+      <div className="card-contacto">
+        {/* Nombre del contacto en negrita */}
+        <h3 className="card-nombre">{nombre}</h3>
 
-      {/* Teléfono */}
-      <p className="card-linea">📞 {telefono}</p>
+        {/* Teléfono */}
+        <p className="card-linea">📞 {telefono}</p>
 
-      {/* Correo */}
-      <p className="card-linea">📧 {correo}</p>
+        {/* Correo */}
+        <p className="card-linea">📧 {correo}</p>
 
-      {/* Etiqueta adicional, si existe */}
-      {etiqueta && (
-        <p className="card-etiqueta">{etiqueta}</p>
-      )}
-    </div>
-  );
-}
+        {/* Etiqueta adicional, si existe */}
+        {etiqueta && (
+          <p className="card-etiqueta">{etiqueta}</p>
+        )}
+      </div>
+    );
+  }
