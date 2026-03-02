@@ -58,8 +58,9 @@ export default function ContactoCard({
     </article>
   );
 }
+*/  
 
-// CLASE 5
+// CLASE 5 Y CLASE 6
 
 export default function ContactoCard({
   nombre,
@@ -89,4 +90,5 @@ export default function ContactoCard({
   );
 }
 
-*/
+
+
