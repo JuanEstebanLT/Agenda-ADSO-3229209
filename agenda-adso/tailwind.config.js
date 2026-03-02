@@ -1,11 +1,29 @@
-/** @type {import('tailwindcss').Config} */
+/*
+/** @type {import('tailwindcss').Config} 
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
         morado: "#7c3aed",
         "morado-oscuro": "#5b21b6",
+      },
+    },
+  },
+  plugins: [],
+};
+*/
+
+// CLASE 7
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        senaPurple: "#7c3aed",
+        senaPurpleDark: "#5b21b6",
       },
     },
   },
