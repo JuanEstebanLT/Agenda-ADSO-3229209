@@ -15,11 +15,11 @@
       "etiqueta": "Usuario"
     },
     {
-      "id": "f006",
-      "nombre": "Gustavo ",
+      "nombre": "Gustavo Bolaños",
       "telefono": "300630490",
       "correo": "gustavo@gmail.com",
-      "etiqueta": "Admin"
+      "etiqueta": "Admin",
+      "id": "f006"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
