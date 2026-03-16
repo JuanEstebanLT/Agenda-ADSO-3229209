@@ -1,4 +1,26 @@
 {
-  "contactos": [],
+  "contactos": [
+    {
+      "id": "5121",
+      "nombre": "Juan",
+      "telefono": "3249176822",
+      "correo": "juan@gmail.com",
+      "etiqueta": "Usuario"
+    },
+    {
+      "id": "7722",
+      "nombre": "Camila Gutierrez ",
+      "telefono": "3156809255",
+      "correo": "camila@gmail.com",
+      "etiqueta": "Usuario"
+    },
+    {
+      "id": "f006",
+      "nombre": "Gustavo ",
+      "telefono": "300630490",
+      "correo": "gustavo@gmail.com",
+      "etiqueta": "Admin"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

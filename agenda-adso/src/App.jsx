@@ -8,6 +8,7 @@ export default function App() {
     <p>Me gustaria aprender a realizar frontend por medio de css y archivos jsx y saberlo subir a repositorios por medio de github</p>
   </main>
 )}
+*/
 
 // CLASE 3
 
@@ -63,14 +64,13 @@ export default function App() {
       <h1 className="app-title">Agenda ADSO</h1>
       <p className="app-subtitle">Contactos guardados</p>
 
-      {/* Recorremos el arreglo contactos y pintamos una tarjeta por cada uno }
       {contactos.map((c) => (
         <ContactoCard
-          key={c.id}        // key única para React
-          nombre={c.nombre} // prop nombre
-          telefono={c.telefono} // prop telefono
-          correo={c.correo} // prop correo
-          etiqueta={c.etiqueta} // prop etiqueta
+          key={c.id}
+          nombre={c.nombre}
+          telefono={c.telefono}
+          correo={c.correo}
+          etiqueta={c.etiqueta}
         />
       ))}
 
@@ -80,9 +80,11 @@ export default function App() {
     </main>
   );
 }
+*/
 
 // CLASE 4
 
+/*
 // src/App.jsx
 
 import { useState } from "react";
@@ -138,10 +140,13 @@ export default function App() {
     </main>
   );
 }
+*/
 
 
 
 // CLASE 5 Y CLASE 6
+
+/*
 import { useEffect, useState } from "react";
 import {
   listarContactos,
@@ -198,7 +203,6 @@ export default function App() {
 
   return (
     <main className="min-h-screen bg-gray-50">
-      {/* Encabezado }
       <header className="max-w-6xl mx-auto px-6 pt-8">
         <p className="text-sm font-semibold text-gray-400 tracking-[0.25em] uppercase">
           Programa ADSO
@@ -212,7 +216,6 @@ export default function App() {
       </header>
 
       <section className="max-w-6xl mx-auto px-6 py-8 space-y-6">
-        {/* Mensajes }
         {error && (
           <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
             {error}
@@ -225,10 +228,8 @@ export default function App() {
           </div>
         )}
 
-        {/* Formulario }
         <FormularioContacto onAgregar={agregarContacto} />
 
-        {/* Lista }
         <div className="space-y-4">
           {contactos.length === 0 && !cargando && (
             <p className="text-gray-500 text-sm">
@@ -248,11 +249,13 @@ export default function App() {
     </main>
   );
 }
+*/
 
 
 
 // CLASE 8
 
+/*
 import { useEffect, useState } from "react";
 import { listarContactos, crearContacto, eliminarContactoPorId } from "./api";
 import FormularioContacto from "./Components/FormularioContacto";
@@ -370,10 +373,12 @@ function App() {
 }
 
 export default App;
+*/
 
 
 // CLASE 9
 
+/*
 // Archivo: src/App.jsx
 
 import { useEffect, useState } from "react";
@@ -515,7 +520,7 @@ function App() {
         )}
 
         <footer className="mt-8 text-xs text-gray-400">
-          <p>Desarrollo Web – ReactJS | Proyecto Agenda ADSO</p>
+          <p>Desarrollo Web - ReactJS | Proyecto Agenda ADSO</p>
           <p>Instructor: Gustavo Adolfo Bolaños Dorado</p>
         </footer>
 
@@ -525,11 +530,12 @@ function App() {
 }
 
 export default App;
-
 */
+
 
 // CLASE 10
 
+/*
 // Archivo: src/App.jsx
 
 import { useEffect, useState } from "react";
@@ -680,7 +686,6 @@ function App() {
           <>
             <FormularioContacto onAgregar={onAgregarContacto} />
 
-            {/*  CLASE 10: Buscador y botón de ordenamiento */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
               <input
                 type="text"
@@ -699,13 +704,11 @@ function App() {
               </button>
             </div>
 
-            {/*  CLASE 10: Mini reto 2 — contador de resultados */}
             <p className="text-xs text-gray-400 mb-3">
               Mostrando {contactosOrdenados.length}{" "}
               {contactosOrdenados.length === 1 ? "contacto" : "contactos"}
             </p>
 
-            {/*  CLASE 10: Renderizado con lista filtrada y ordenada */}
             <section className="space-y-4">
               {contactosOrdenados.length === 0 ? (
                 <p className="text-sm text-gray-500">
@@ -728,10 +731,213 @@ function App() {
         )}
 
         <footer className="mt-8 text-xs text-gray-400">
-          <p>Desarrollo Web – ReactJS | Proyecto Agenda ADSO</p>
+          <p>Desarrollo Web - ReactJS | Proyecto Agenda ADSO</p>
           <p>Instructor: Gustavo Adolfo Bolaños Dorado</p>
         </footer>
 
+      </div>
+    </div>
+  );
+}
+
+export default App;
+*/
+
+// CLASE 11
+
+// Archivo: src/App.jsx
+// Componente principal de la aplicación Agenda ADSO.
+
+import { useEffect, useState } from "react";
+import {
+  listarContactos,
+  crearContacto,
+  actualizarContacto,
+  eliminarContactoPorId,
+} from "./api";
+import { APP_INFO } from "./config";
+import FormularioContacto from "./components/FormularioContacto";
+import ContactoCard from "./components/ContactoCard";
+
+function App() {
+  const [contactos, setContactos] = useState([]);
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState("");
+  const [busqueda, setBusqueda] = useState("");
+  const [ordenAsc, setOrdenAsc] = useState(true);
+  const [contactoEnEdicion, setContactoEnEdicion] = useState(null);
+
+  useEffect(() => {
+    const cargarContactos = async () => {
+      try {
+        setCargando(true);
+        setError("");
+        const data = await listarContactos();
+        setContactos(data);
+      } catch (error) {
+        console.error("Error al cargar contactos:", error);
+        setError(
+          "No se pudieron cargar los contactos. Verifica que el servidor esté encendido e intenta de nuevo."
+        );
+      } finally {
+        setCargando(false);
+      }
+    };
+    cargarContactos();
+  }, []);
+
+  const onAgregarContacto = async (nuevoContacto) => {
+    try {
+      setError("");
+      const creado = await crearContacto(nuevoContacto);
+      setContactos((prev) => [...prev, creado]);
+    } catch (error) {
+      console.error("Error al crear contacto:", error);
+      setError(
+        "No se pudo guardar el contacto. Verifica tu conexión o el estado del servidor e intenta nuevamente."
+      );
+      throw error;
+    }
+  };
+
+  const onActualizarContacto = async (contactoActualizado) => {
+    try {
+      setError("");
+      const actualizado = await actualizarContacto(
+        contactoActualizado.id,
+        contactoActualizado
+      );
+      setContactos((prev) =>
+        prev.map((c) => (c.id === actualizado.id ? actualizado : c))
+      );
+      setContactoEnEdicion(null);
+    } catch (error) {
+      console.error("Error al actualizar contacto:", error);
+      setError(
+        "No se pudo actualizar el contacto. Verifica tu conexión o el servidor e intenta nuevamente."
+      );
+      throw error;
+    }
+  };
+
+  const onEliminarContacto = async (id) => {
+    try {
+      setError("");
+      await eliminarContactoPorId(id);
+      setContactos((prev) => prev.filter((c) => c.id !== id));
+      setContactoEnEdicion((actual) =>
+        actual && actual.id === id ? null : actual
+      );
+    } catch (error) {
+      console.error("Error al eliminar contacto:", error);
+      setError(
+        "No se pudo eliminar el contacto. Vuelve a intentarlo o verifica el servidor."
+      );
+    }
+  };
+
+  const onEditarClick = (contacto) => {
+    setContactoEnEdicion(contacto);
+    setError("");
+  };
+
+  const onCancelarEdicion = () => {
+    setContactoEnEdicion(null);
+  };
+
+  const contactosFiltrados = contactos.filter((c) => {
+    const termino = busqueda.toLowerCase();
+    const nombre = c.nombre.toLowerCase();
+    const correo = c.correo.toLowerCase();
+    const etiqueta = (c.etiqueta || "").toLowerCase();
+    return (
+      nombre.includes(termino) ||
+      correo.includes(termino) ||
+      etiqueta.includes(termino)
+    );
+  });
+
+  const contactosOrdenados = [...contactosFiltrados].sort((a, b) => {
+    const nombreA = a.nombre.toLowerCase();
+    const nombreB = b.nombre.toLowerCase();
+    if (nombreA < nombreB) return ordenAsc ? -1 : 1;
+    if (nombreA > nombreB) return ordenAsc ? 1 : -1;
+    return 0;
+  });
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <header className="mb-8">
+          <p className="text-xs tracking-[0.3em] text-gray-500 uppercase">
+            Desarrollo Web ReactJS Ficha {APP_INFO.ficha}
+          </p>
+          <h1 className="text-4xl font-extrabold text-gray-900 mt-2">
+            {APP_INFO.titulo}
+          </h1>
+          <p className="text-sm text-gray-600 mt-1">{APP_INFO.subtitulo}</p>
+        </header>
+
+        {error && (
+          <div className="mb-4 rounded-xl bg-red-50 border border-red-200 px-4 py-3">
+            <p className="text-sm font-medium text-red-700">{error}</p>
+          </div>
+        )}
+
+        {cargando ? (
+          <p className="text-sm text-gray-500">Cargando contactos...</p>
+        ) : (
+          <>
+            <FormularioContacto
+              onAgregar={onAgregarContacto}
+              onActualizar={onActualizarContacto}
+              contactoEnEdicion={contactoEnEdicion}
+              onCancelarEdicion={onCancelarEdicion}
+            />
+
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+              <input
+                type="text"
+                className="w-full md:flex-1 rounded-xl border-gray-300 focus:ring-purple-500 focus:border-purple-500 text-sm"
+                placeholder="Buscar por nombre, correo o etiqueta..."
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+              />
+              <button
+                type="button"
+                onClick={() => setOrdenAsc((prev) => !prev)}
+                className="bg-gray-100 text-gray-700 text-sm px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-200"
+              >
+                {ordenAsc ? "Ordenar Z-A" : "Ordenar A-Z"}
+              </button>
+            </div>
+
+            <section className="space-y-4">
+              {contactosOrdenados.length === 0 ? (
+                <p className="text-sm text-gray-500">
+                  No se encontraron contactos que coincidan con la búsqueda.
+                </p>
+              ) : (
+                contactosOrdenados.map((c) => (
+                  <ContactoCard
+                    key={c.id}
+                    nombre={c.nombre}
+                    telefono={c.telefono}
+                    correo={c.correo}
+                    etiqueta={c.etiqueta}
+                    onEliminar={() => onEliminarContacto(c.id)}
+                    onEditar={() => onEditarClick(c)}
+                  />
+                ))
+              )}
+            </section>
+          </>
+        )}
+
+        <footer className="mt-8 text-xs text-gray-400">
+          <p>Desarrollo Web -- ReactJS | Proyecto Agenda ADSO</p>
+          <p>Instructor: Gustavo Adolfo Bolaños Dorado</p>
+        </footer>
       </div>
     </div>
   );
