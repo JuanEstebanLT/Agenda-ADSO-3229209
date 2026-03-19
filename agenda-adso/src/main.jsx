@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     {/* Aquí montamos nuestra Agenda ADSO }
   </React.StrictMode>
 );
-*/
+
 
 // CLASE 7
 
@@ -30,5 +30,27 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
+  </React.StrictMode>
+);
+*/
+
+// CLASE 13
+// Se agrega AuthProvider para que el estado de sesión esté
+// disponible en toda la aplicación desde el punto de entrada.
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+import App from "./App.jsx";
+import "./index.css";
+
+// Proveedor de autenticación (Context API)
+import { AuthProvider } from "./context/AuthContext";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </React.StrictMode>
 );
